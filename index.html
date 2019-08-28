@@ -1,0 +1,392 @@
+<html>
+
+<head>
+    <title>ToDo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body id="idBody">
+
+
+    <div class="myContainer">
+
+        <!-- page 1 starts -->
+        <div id="page1" class="mainContainer">
+            <div class="topBarInfo">
+                <!--top bar-->
+                <div id="idSlack"><i class="fa fa-slack fontsize13rem"></i></div>
+                <!--menu-->
+                <div id="idMonthYear"></div>
+                <!--month and year-->
+                <div id="idPage1Server"> <i class="fa fa-server hide"></i> </div>
+                <!--options-->
+            </div>
+            <div class="calenderInfo">
+                <!--Calendar container-->
+                <div id="idCalendar">
+                    <!--Calendar div-->
+                    <label for="idCal">Calendar</label>
+                    <input id="idCal" type="date" onchange="chechtrigger()">
+                </div>
+            </div>
+
+            <div id="idAllDisplay">
+
+                <div id="idDayDateInfo">
+                    <div class="dayDateInfo">
+                        <!--day date container-->
+                        <div id="idTodayDate"></div>
+                        <!--day date div-->
+                    </div>
+                </div>
+
+
+                <div id="idNotificationBar1" class="notificationBar">
+
+                    <div class="flexGrow1">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <div id="idPage1OverdueTask" class="page1OverdueTask">
+                        You have following tasks for today
+                    </div>
+                    <div id="idArrowDown1" class="flexGrow1">
+                        <i class="fa fa-angle-double-down"></i>
+                    </div>
+
+                </div>
+
+                <!--all tasks container-->
+                <div id="idtaskInfo1" class="taskInfo hide"> </div>
+
+
+                <div class="dayDateInfo">
+                    <div id="idTomorrow"></div>
+                </div>
+
+                <div class="notificationBar">
+                    <div class="flexGrow1">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <div class="page1OverdueTask">
+                        You have following tasks for next day
+                    </div>
+                    <div id="idArrowDown2" class="flexGrow1">
+                        <i class="fa fa-angle-double-down"></i>
+                    </div>
+                </div>
+
+
+                <div id="idtaskInfo2" class="taskInfo hide"> </div>
+            </div>
+
+
+            <div class="bottomBar">
+                <div id="task" class="centerText" onclick="return show('#page2','#page1');">
+                    <i class="fa fa-edit"></i>
+                    Task
+                </div>
+                <div class="idPage1Cal">
+                    <i class="fa fa-calendar"></i>
+                    Calendar
+                </div>
+                <div class="centerText hide">
+                    <i class="fa fa-cogs"></i>
+                    Setting
+                </div>
+            </div>
+        </div>
+
+        <!-- page 1 ends -->
+
+
+
+
+        <!-- page 2 starts -->
+        <div id="page2" class="mainContainer hide">
+            <div class="topBarInfo">
+                <div class="fa fa-home fontSize2rem flexGrow1" onclick="return show('#page1','#page2');"></div>
+                <div class="fontsize13rem page1OverdueTask"> My List</div>
+                <div class="fa fa-server hide"> </div>
+            </div>
+
+            <div class="myLists">
+                <div id="idPage2to4">
+                    <div class="fontSize40">
+                        <i class="fa fa-newspaper-o"></i>
+                    </div>
+                    <div class="colorGreen">
+                        All Tasks
+                    </div>
+                </div>
+                <div id="idPage2to3">
+                    <div class="fontSize40">
+                        <i class="fa fa-plus"></i>
+                    </div>
+                    <div class="colorGreen">
+                        Add To List
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bottomBar">
+                <div class="idPage1Cal">
+                    
+                    <i class="fa fa-edit"></i>
+                  
+                    Task
+                </div>
+                <div class="centerText" onclick="return show('#page1','#page2');">
+                    <i class="fa fa-calendar"></i>
+                
+                    Calendar
+                </div>
+                <div class="centerText hide">
+                    <i class="fa fa-cogs"></i>
+                   
+                    Setting
+                </div>
+            </div>
+        </div>
+        <!-- page 2 ends -->
+
+
+
+
+
+        <!-- page 3 starts -->
+        <div id="page3" class="mainContainer hide">
+            <div class="createNewTask">
+                <div id="idHomepg3" class="fa fa-home" onclick="return show('#page1','#page3');"> </div>
+                <div> Create New Task</div>
+                <div class="colorGreen" onclick="ClearFields();">Clear</div>
+            </div>
+
+            <div class="taskName">
+                <input type="text" id="idTaskNametxt" name="taskNametxt" placeholder="Task Name">
+            </div>
+            <div class=taskNote>
+                <textarea name="taskNotetxt" id="idTaskNotetxt" cols="30" rows="10" placeholder="Task Note"></textarea>
+            </div>
+            <div class="priorityAndDate">
+                <div class="priority-click">
+                    <i class="fa fa-level-up fontSize2rem"></i>
+                    Priority
+                    <select id="idSelect">
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <div class="date-click">
+                    <i class="fa fa-calendar fontSize2rem"></i>
+                    Date
+                    <input id="idDate" type="date">
+                </div>
+            </div>
+            <div class="attachmentFile">
+                <div id="idPage3Attachment"> Attachment File</div>
+                <div class="fa fa-plus-circle colorGreen flexGrow1 width1rem">
+                    <input type="file" id="idTapToAdd" multiple accept="*/*" class="inputToFile">
+                </div>
+                <div class="colorGreen flexGrow1" id="clearIt" onclick="ClearAttach()">Clear</div>
+            </div>
+            <div class="tapToAdd">
+                <div id="idDisplayFile"></div>
+            </div>
+            <div class="createTask">
+                <input type="submit" value="Create Task">
+            </div>
+
+
+        </div>
+        <!-- page 3 ends -->
+
+
+
+
+        <!-- page 4 starts -->
+        <div id="page4" class="mainContainer hide">
+            <div class="allTaskOptions">
+                <div class="fa fa-home fontSize2rem flexGrow1" onclick="return show('#page1','#page4');"> </div>
+                <div class="widthAuto fontsize13rem page1OverdueTask"> All Tasks</div>
+                <!-- <div class="fa fa-server hide"> </div> -->
+            </div>
+            <div class="todayOption">
+                <div>Tasks based on creation/modification date</div>
+                <div class="fa fa-plus-circle fontsize13rem" onclick="return show('#page3','#page4');"> </div>
+            </div>
+            <div id="idpage4TaskInfo"></div>
+
+        </div>
+        <!-- <a href="#" onclick="return show('page1','page4');">Show page 1</a> -->
+        <!-- page 4 ends -->
+
+        <!-- page 5 starts -->
+
+        <div id="page5" class="mainContainer hide">
+            <div id="closeDiv">
+                <div class="page1OverdueTask">Task In Detail</div>
+                <i class="fa fa-times greenColor" aria-hidden="true" id="idOfClose"></i>
+            </div>
+            <div id="idShowDataInDetail"></div>
+            
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <script id="detail-template" type="text/x-handlebars-template">
+        <div class="showingDivOfPage41">
+                <div id="titleDiv" class="flexGrow1 greenColor">
+                    Task:
+                </div>
+                <div id="titleDivShow" class="page1OverdueTask">
+                    {{title}}
+                </div>
+            </div>
+            <div class="showingDivOfPage41">
+                <div id="statusDiv" class="flexGrow1 greenColor">
+                    Status:
+                </div>
+                <div id="statusDivShow" class="page1OverdueTask">
+                    {{status}}
+                </div>
+            </div>
+            <div class="showingDivOfPage41">
+                <div id="dateOfTaskDiv" class="flexGrow1 greenColor">
+                    Task Date:
+                </div>
+                <div id="dateOfTaskDivShow" class="page1OverdueTask">
+                    {{changeFormat dateOfTask}}
+                </div>
+            </div>
+            <div class="showingDivOfPage41">
+                <div id="priorityDiv" class="flexGrow1 greenColor">
+                    Priority:
+                </div>
+                <div id="priorityDivShow" class="page1OverdueTask">
+                    {{priority}}
+                </div>
+            </div>
+            <div class="showingDivOfPage42">
+                <div id="noteDiv" class="greenColor">
+                    Note:
+                </div>
+                <div id="noteDivShow" class="displayover">
+                    {{note}}
+                </div>
+            </div>
+            <div class="showingDivOfPage42">
+                <div id="imgurlDiv" class="greenColor">
+                    Attach Image:
+                </div>
+                <div id="imgurlDivShow" class="displayover">
+                    {{#each img_url}}
+                    <img src="{{this}}" height="65px" >
+                    {{/each}}
+                </div>
+            </div>
+
+            {{#checkStatus status}}
+            <div id="idClickToDone">DONE ?
+            </div>
+            {{/checkStatus}}
+    </script>
+
+
+    <script id="message1-template" type="text/x-handlebars-template">
+        {{#each this}}
+        {{#checktoday dateOfTask}}
+        
+        <div class="messageBar ">
+            <!-- <div class="flexGrow1 greenBack">
+                {{status}}
+            </div> -->
+            <div class="taskInDetail1" data-tid={{tid}}>  
+                {{title}}
+            </div>
+            <div class="yellowBack flexGrow1">  
+                {{priority}}
+            </div>
+        </div>
+
+        {{/checktoday}}
+        {{/each}}
+    </script>
+
+
+    <script id="message2-template" type="text/x-handlebars-template">
+        {{#each this}}
+        {{#checkDateNext dateOfTask}}
+        
+        <div class="messageBar ">
+            <!-- <div class="flexGrow1 greenBack">
+                {{status}}
+            </div> -->
+            <div class="taskInDetail1" data-tid={{tid}} >   
+                {{title}}
+            </div>
+            <div class="yellowBack flexGrow1">  
+                {{priority}}
+            </div>
+        </div>
+
+        {{/checkDateNext}}
+        {{/each}}
+    </script>
+
+    <script id="message3-template" type="text/x-handlebars-template">
+        {{#each this}}
+        
+        <div>{{changeFormat dateOfTask}}</div>
+        <div class="messageBar ">
+            <div class="flexGrow1 greenBack">
+                {{status}}
+            </div>
+            <div class="taskInDetail2" data-tid={{tid}} >   
+                {{title}}
+            </div>
+            <div class="yellowBack flexGrow1">  
+                {{priority}}
+            </div>
+        </div>
+
+        {{/each}}
+    </script>
+
+    <script id="message4-template" type="text/x-handlebars-template">
+
+
+        <div class="messageBar ">
+            <div class="flexGrow1 greenBack">
+                {{status}}
+            </div>
+            <div class="taskInDetail3" data-tid={{tid}} >   
+                {{title}}
+            </div>
+            <div class="yellowBack flexGrow1">  
+                {{priority}}
+            </div>
+        </div>
+        
+      
+    </script>
+
+
+
+    <script src="./script/jquery-3.4.1.js"></script>
+    <script src="./script/moment.js"></script>
+    <script src="script/handlebars-v4.1.2.js"></script>
+    <script src="./script/script.js"></script>
+</body>
+
+</html>
